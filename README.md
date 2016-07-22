@@ -1,4 +1,4 @@
-#### Meta News Link Analysis
+# Meta News
 
 Single page application designed to let news readers get background info on the subject of their reading and help them tap into a unified conversation.
 
@@ -10,6 +10,19 @@ It takes as input data a news article and gives back a single page of results th
 5. if applicable, it will find tweets relevant to the event, and allow the user to participate in the conversations.
 
 All of the above results will be filtered by varied criteria.
+
+# Installation
+
+If you already have `node` installed, running MetaNews is as easy as
+
+```
+npm install
+node server.js
+```
+
+For maximum portability, you can also have MetaNews run in a Docker container.
+For convenience, we have documented the appropriate Docker commands in the `Makefile`.
+
 
 ##### Development (Few Tips Before Starting):
 1. Install nodemon:
