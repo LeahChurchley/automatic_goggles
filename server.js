@@ -33,3 +33,6 @@ app.listen(port,function(){
   console.log(`Listening to port ${port}`);
 });
 
+process.on('SIGINT', function() {
+    process.exit();
+});
