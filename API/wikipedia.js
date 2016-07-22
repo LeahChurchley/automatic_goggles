@@ -1,12 +1,9 @@
-var Intlpedia = require('intl-wikipedia');
-var intlpedia = new Intlpedia('en');
-var cheerio = require('cheerio');
 var request = require('request');
+var cheerio = require('cheerio');
 
-var wiki = {};
-
-function wikipedia(url,callback){
-  request(url, function(err,res,body){
+function wikipedia(url, callback){
+  request(url, function(err, res, body){
+    var wiki = {};
     if(!err & res.statusCode === 200){
       var $ = cheerio.load(body);
       var heading = $('h1#firstHeading');

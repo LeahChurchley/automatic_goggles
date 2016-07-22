@@ -1,20 +1,33 @@
+// External libraries
 var express = require('express');
 var path = require('path');
-var bodyParser = require('body-parser')
-var favicon = require('serve-favicon');
+var bodyParser = require('body-parser');
 
+// Internal libraries
+var route_api_calls = require('./api/actions');
+
+// The main app
 var app = express();
-var router = require('./app/action');
-var port = process.env.port || 3000;
 
-require('./app/database');
-app.set('views', path.join(__dirname,'/app/views'));
-app.set('view engine','jade');
-app.use(express.static(path.join(__dirname,'public')));
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+// Middleware for parsing and compiling
+app.set('views', path.join(__dirname,'/public/views'));
+app.set('view engine', 'jade');
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
-app.use('/',router);
-app.listen(port,function(){
+
+// Route home page
+app.get('/', function(req,res){
+  res.render('index');
+});
+
+// Route API endpoints
+app.use('/api', route_api_calls);
+
+// Route static assets
+app.use(express.static(path.join(__dirname,'/public/static')));
+
+
+// Listen for requests
+var port = process.env.port || 3000;
   console.log(`Listening to port ${port}`);
 })
