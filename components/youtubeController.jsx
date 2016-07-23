@@ -1,90 +1,42 @@
+'use strict';
+
 import React from 'react';
+import $ from 'jquery';
 import YouTube from 'react-youtube';
+
+
+/* YoutubeController
+ *
+ * A widget that shows the top video hit for a given YouTube search term.
+ *
+ */
 
 export default class YoutubeController extends React.Component {
 
-  constructor(props){
-    super(props);
-    this.state = {data: [], loading: true, index: 0,counter: 0, arrived: false};
-    // this.getData=function(){
-    //
-    // });
-    // }
-  }
-  componentWillMount(){
-    $.ajax({
-    type: 'POST',
-    url: '/youtube',
-    data: {search_term: this.props.data},
-    dataType: 'json',
-    success: function(youtubeData){
-      this.setState({data: youtubeData, loading:false});
-    }.bind(this)
-    });
-  }
-  // componentWillMount(){
-  //     this.serverRequest =
-  // }
-  componentWillReceiveProps(){
-      $.ajax({
-      type: 'POST',
-      url: '/youtube',
-      data: {search_term: this.props.data},
-      dataType: 'json',
-      success: function(youtubeData){
-        this.setState({data: youtubeData, loading:false, arrived: false});
-      }.bind(this),
-      error: function(err) { console.error('error', err) }.bind(this)
-      });
-  }
-    _state(e){
-      if(e.data === 1)
-      {
-        console.log("Playing");
-        clearTimeout(this.myvar);
-      }
-      else if(e.data === 2){
-        console.log("Pausing");
-        this.setState({index: this.state.index + 1});
-      }
-      else if(e.data === 0){
-        console.log("ended");
-        this.setState({index: this.state.index + 1});
-      }
-    }
-
   render(){
-
-    if(!this.state.loading){
-      console.log(this.state.index);
-    this.myvar = setTimeout(()=>{
-      if (this.state.index >= this.state.data.data.length-1){
-        this.setState({index: 0});
-      }else{
-        this.setState({index: this.state.index + 1});
-      }
-    },10000);}
-    // if(this.props.data){
-    //   debugger;
-    //   $.ajax({
-    //   type: 'POST',
-    //   url: '/youtube',
-    //   data: {search_term:'one piece'},
-    //   dataType: 'json',
-    //   success: function(youtubeData){
-    //     this.setState({data: youtubeData, loading:false, arrived: false});
-    //   }.bind(this),
-    //   error: function(err) { console.error('error', err) }.bind(this)
-    //   });
-    // }
     return(
-        <div>
-          {!this.state.loading ?
-              <YouTube key={this.state.counter + 1}
-                videoId={this.state.data.data[this.state.index].video_id}
-                onStateChange={this._state.bind(this)}/> :
-            <img className="loading" src="images/loading_spinner.gif" alt="Loading..." />}
-       </div>
+      <iframe width="560" height="315" src={this.state.data} frameBorder="0"></iframe>
      );
     };
+
+  constructor(props){
+    super(props);
+    this.state = {data: '', loading: false};
+  }
+
+  componentWillReceiveProps(newProps){
+    this.setState({data: '', loading: true});
+    $.ajax({
+      type: 'POST',
+      url: '/api/youtube',
+      data: {search_term: newProps.term},
+      dataType: 'json',
+      success: function(videoURL){
+        this.setState({data: videoURL, loading: false});
+      }.bind(this),
+      error: function(err) { console.error('error', err) }.bind(this)
+    });
+  }
+
+
 }
