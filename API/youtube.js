@@ -1,3 +1,5 @@
+'use strict';
+
 var Youtube = require('youtube-node');
 var keys = require('./keys');
 

@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
   twitter: {
     consumer_key: 'ncsEPVHDq4FUMMj2YXdMLHitx',
