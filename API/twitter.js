@@ -6,9 +6,8 @@ var Twitter = require('twitter');
 var keys = require('./keys');
 var twitter = new Twitter(keys.twitter);
 
-
 var tweet_list = function(term, callback){
-		twitter.get('search/tweets', {q: term, lang: "en", result_type: "popular", count: 12}, function(error, tweets, response) {
+		twitter.get('search/tweets', {q: term, lang: "en", result_type: "popular", count: 4}, function(error, tweets, response) {
 			var topTweets = [];
 				if (error) {
 					console.log(error);

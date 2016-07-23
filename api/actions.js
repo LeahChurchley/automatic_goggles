@@ -3,9 +3,19 @@
 var express = require('express');
 var router = express.Router();
 
+var tweets = require('./twitter');
 var wikipedia = require('./wikipedia');
 var youtube = require('./youtube');
-var tweets = require('./twitter');
+
+// Twitter
+router.post('/twitter', function(req, res){
+  var term = req.body.search_term;
+  console.log(req.body);
+  tweets(term, function(result){
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify(result));
+  });
+});
 
 // Wikipedia
 router.post('/wikipedia', function(req, res){
@@ -14,7 +24,7 @@ router.post('/wikipedia', function(req, res){
   var url = "https://en.wikipedia.org/wiki/" + term;
   wikipedia(url, function(result){
     res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({ data: result }));
+    res.end(JSON.stringify(result));
   });
 });
 
@@ -24,17 +34,7 @@ router.post('/youtube', function(req, res){
   console.log(req.body);
   youtube(term, function(result){
     res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({ data: result }));
-  });
-});
-
-// Twitter
-router.post('/twitter', function(req, res){
-  var term = req.body.search_term;
-  console.log(req.body);
-  tweets(term, function(result){
-    res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({ data: result }));
+    res.end(JSON.stringify(result));
   });
 });
 

@@ -7,22 +7,14 @@ var youTube = new Youtube();
 youTube.setKey(keys.youtube);
 youTube.addParam('relevanceLanguage', 'en');
 
-
 var videos = function(term, callback){
-  youTube.search(term,5,function(error, result) {
-    var vids = [];
+  youTube.search(term, 1, function(error, result) {
     if (error) {
       console.log(error);
-    }else {
-      for(var i=0;i<result["items"].length;i++){
-        vids.push({
-          video_id: result["items"][i].id.videoId
-        });
-      }
-        if(vids.length === result["items"].length){
-          callback(vids);
-        }
-      }
+    } else {
+      var url = 'https://www.youtube.com/embed/' + result['items'][0].id.videoId;
+      callback(url);
+    }
   });
 };
 
