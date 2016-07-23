@@ -9,21 +9,11 @@ html {
 /* Styles */
 html {
   color: #222;
-  background-color: white;
+  background-color: #f5f5f5;
   font-family: Raleway, Arial, serif;
   font-size: 1em;
   font-weight: 400;
   line-height: 1.4; }
-
-.form-control {
-  border-bottom-right-radius: 0px;
-  border-top-right-radius: 0px;
-}
-
-form > .btn {
-  border-bottom-left-radius: 0px;
-  border-top-left-radius: 0px;
-}
 
 body {
   max-width: 1200px;
@@ -52,14 +42,14 @@ header {
   header:last-child {
     margin-right: 0; }
 
-/*img {
+img {
   max-width: 100%;
-  display: block; }*/
+  display: block; }
 
 ul {
   padding: 0; }
 
-/*h1 {
+h1 {
   font-weight: 900;
   font-size: 3em;
   margin: 0; }
@@ -67,7 +57,7 @@ ul {
 h2 {
   font-weight: 700;
   font-size: 2em;
-  margin-top: 0; }*/
+  margin-top: 0; }
 
 div::after {
   clear: both;
@@ -75,58 +65,49 @@ div::after {
   display: table; }
 
 a {
+  color: #2b55b0;
   text-decoration: none;
   font-weight: 700; }
 
 /* Main content */
-.video,
-.wiki,
-.map,
-.twitter {
+#video,
+#wiki
+#twitter {
   margin-bottom: 1em;
   border-radius: 3px;
   overflow: hidden;
   position: relative; }
 
-.video,
-.wiki,
-.map {
-  height: calc(25em); }
+#video,
+#wiki {
+  height: calc(22.86em + 2px); }
 
-.twitter {
-  height: calc(17em); }
+#twitter {
+  min-height: calc(22.86em + 2px); }
 
-.video {
+#video {
   float: left;
   display: block;
-  margin-right: 2%;
-  width: 60%; }
-  .video:last-child {
+  margin-right: 2.35765%;
+  width: 65.88078%; }
+  #video:last-child {
     margin-right: 0; }
 
-.wiki {
+#wiki {
   float: left;
   display: block;
-  margin-right: 0%;
-  width: 38%; }
- /* .wiki:last-child {
-    margin-right: 0; }*/
+  margin-right: 2.35765%;
+  width: 31.76157%;
+  margin-right: 0; }
+  #wiki:last-child {
+    margin-right: 0; }
 
-.map {
+#twitter {
   float: left;
   display: block;
-  margin-right: 0%;
-  width: 26%;
-  /*border: 1px solid #ccc;*/ }
-  /*.map:last-child {
-    margin-right: 0; }*/
-
-.twitter {
-  float: left;
-  display: block;
-  margin-right: 0%;
-  width: 100%; }
-  .twitter:last-child {
+  margin-right: 2.84259%;
+  width: 79.43148%; }
+  #twitter:last-child {
     margin-right: 0; }
 
 .loading {
@@ -136,29 +117,24 @@ a {
   left: calc(50% - 64px); }
 
 /* Video */
-.video div {
+#video div {
   height: 100%; }
-.video iframe {
+#video iframe {
   width: 100%;
   height: 100%;
   display: block;
   border: 0; }
 
 /* Wikipedia */
-.wiki {
-  /*border: 1px solid #ccc;*/
-  /*background-color: #fff;*/
+#wiki {
+  border: 1px solid #ccc;
+  background-color: #fff;
   padding: 1em; }
-
-  #wiki{
-    border: 1px solid #ccc;
-  }
-
-  .wiki p {
+  #wiki p {
     position: relative;
     height: 14em;
     overflow: hidden; }
-  .wiki p:after {
+  #wiki p:after {
     content: "";
     text-align: right;
     position: absolute;
@@ -166,84 +142,75 @@ a {
     right: 0;
     width: 70%;
     height: 1.4em;
-    background: linear-gradient(to right, rgba(252, 252, 252, 0), rgba(252, 252, 252, 1)); }
-  .wiki .wiki_ref {
+    background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%); }
+  #wiki #wiki_ref {
     display: block;
     text-align: right;
     opacity: 0.7;
     color: #222; }
-    .wiki .wiki_ref img {
+    #wiki #wiki_ref img {
       height: 1.4em;
       display: inline;
       vertical-align: bottom; }
 
-/* Maps */
-/*.map img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; }*/
-
 /* Twitter */
-.twitter {
+#twitter {
   background-color: transparent; }
-/*.twitter > div {
-  min-width: 100%;
-  min-height: 100%; }
-.twitter ul {
-  margin: 0; }*/
-.twitter li {
-  float: left;
-  display: block;
-  margin-right: 1%;
-  width: 24.25%; }
-.twitter li:last-child {
-  margin-right: 0; }
-/*.twitter .twitter-tweet {
-  margin: 0 auto !important; }
-.twitter blockquote {
-  color: #fff;
-  overflow: hidden; }
-.twitter blockquote a {
-  color: #fff; }*/
+  #twitter > div {
+    min-width: 100%;
+    min-height: 100%; }
+  #twitter ul {
+    margin: 0; }
+  #twitter li {
+    float: left;
+    display: block;
+    margin-right: 2.35765%;
+    width: 23.23176%; }
+    #twitter li:last-child {
+      margin-right: 0; }
+  #twitter .twitter-tweet {
+    margin: 0 auto !important; }
+  #twitter blockquote {
+    overflow: hidden; }
+    #twitter blockquote a {
+      color: inherit; }
 
 /* Media Queries */
-@media screen and (max-width: 1220px) {
-  .video,
-  .wiki,
-  .map,
-  .twitter {
+@media screen and (max-width: 800px) {
+  #video,
+  #wiki,
+  #twitter {
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 100%; }
-    .video:last-child,
-    .wiki:last-child,
-    .map:last-child,
-    .twitter:last-child {
+    #video:last-child,
+    #wiki:last-child,
+    #twitter:last-child {
       margin-right: 0; }
 
-  .twitter {
+  #twitter {
     height: auto;
     padding: 0 1em; }
 
-  .twitter li {
+  #twitter li {
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 48.82117%;
     margin-bottom: 1em; }
-    .twitter li:last-child {
+    #twitter li:last-child {
       margin-right: 0; }
 
-  .twitter li:nth-child(2n) {
+  #twitter li:nth-child(2n) {
     margin-right: 0; } }
 @media screen and (max-width: 600px) {
-  .twitter li {
+  #twitter li {
     float: left;
     display: block;
     margin-right: 2.35765%;
     width: 100%; }
-    .twitter li:last-child {
+    #twitter li:last-child {
       margin-right: 0; } }
 
 /*# sourceMappingURL=stylesheet.css.map */

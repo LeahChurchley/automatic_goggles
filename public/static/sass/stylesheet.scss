@@ -5,7 +5,7 @@
 /* Variables */
 
 $article-background-color: #fff;
-$site-background-color: #2b55b0;
+$site-background-color: #f5f5f5;
 $font-color: #222;
 $header-color: #2b55b0;
 $box-shadow-color: #cbc6c5;
@@ -85,38 +85,32 @@ a {
 
 /* Main content */
 
-.video,
-.wiki,
-.map,
-.twitter {
+#video,
+#wiki
+#twitter {
 	@include card;
 	position: relative;
 }
 
-.video,
-.wiki,
-.map {
+#video,
+#wiki {
 	height: calc(22.86em + 2px);
 }
 
-.twitter {
+#twitter {
 	min-height: calc(22.86em + 2px);
 }
 
-.video {
+#video {
 	@include span-columns(8 of 12);
 }
 
-.wiki {
+#wiki {
 	@include span-columns(4 of 12);
 	@include omega;
 }
 
-.map {
-	@include span-columns(2 of 10);
-}
-
-.twitter {
+#twitter {
 	@include span-columns(8 of 10);
 }
 
@@ -129,7 +123,7 @@ a {
 
 /* Video */
 
-.video {
+#video {
 	div {
 		height: 100%;
 	}
@@ -144,7 +138,7 @@ a {
 
 /* Wikipedia */
 
-.wiki {
+#wiki {
 	border: 1px solid #ccc;
 	background-color: $article-background-color;
 	padding: 1em;
@@ -166,7 +160,7 @@ a {
 		background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
 	}
 
-	.wiki_ref {
+	#wiki_ref {
 		display: block;
 		text-align: right;
 		opacity: 0.7;
@@ -180,17 +174,10 @@ a {
 	}
 }
 
-/* Maps */
-
-.map img {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-}
 
 /* Twitter */
 
-.twitter {
+#twitter {
 	background-color: transparent;
 
 	& > div {
@@ -211,38 +198,37 @@ a {
 	}
 
 	blockquote {
-		color: #fff;
 		overflow: hidden;
 
 		a {
-			color: #fff;
+			color: inherit;
 	 	}
 	}
 }
 
+
 /* Media Queries */
 
-$tablet: new-breakpoint(max-width 1220px);
+$tablet: new-breakpoint(max-width 800px);
 
 @include media($tablet) {
-	.video,
-	.wiki,
-	.map,
-	.twitter {
+	#video,
+	#wiki,
+	#twitter {
 		@include span-columns(12 of 12);
 	}
 
-	.twitter {
+	#twitter {
 		height: auto;
 		padding: 0 1em;
 	}
 
-	.twitter li {
+	#twitter li {
 		@include span-columns(6 of 12);
 		margin-bottom: 1em;
 	}
 
-	.twitter li:nth-child(2n){
+	#twitter li:nth-child(2n){
 		@include omega();
 	}
 }
@@ -250,7 +236,7 @@ $tablet: new-breakpoint(max-width 1220px);
 $mobile: new-breakpoint(max-width 600px);
 
 @include media($mobile) {
-	.twitter li {
+	#twitter li {
 		@include span-columns(12 of 12);
 	}
 }
