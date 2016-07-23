@@ -20,4 +20,4 @@ install:
 	            -v `pwd`:/data \
 	            -w /data \
 	            $(DOCKER_IMAGE) \
-	            npm install
+	            npm install --unsafe-perm
